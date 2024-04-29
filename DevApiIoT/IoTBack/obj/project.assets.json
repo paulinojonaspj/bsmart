@@ -10904,11 +10904,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\PROJETO\\Repositorios\\DevApiIoT\\IoTBack\\IOTBack.csproj",
+      "projectUniqueName": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\IOTBack.csproj",
       "projectName": "IOTBack",
-      "projectPath": "C:\\PROJETO\\Repositorios\\DevApiIoT\\IoTBack\\IOTBack.csproj",
+      "projectPath": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\IOTBack.csproj",
       "packagesPath": "C:\\Users\\pj\\.nuget\\packages\\",
-      "outputPath": "C:\\PROJETO\\Repositorios\\DevApiIoT\\IoTBack\\obj\\",
+      "outputPath": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -11042,5 +11042,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'Azure.Identity' 1.10.4 tem uma moderado vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-wvxc-855f-jvrv",
+      "libraryId": "Azure.Identity",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

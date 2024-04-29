@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IOTBack")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+87f58e4df440f359f6d814c9b78c3231265054c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e5e4592da15c8bf48793b8d4a9469f591a6478d7")]
 [assembly: System.Reflection.AssemblyProductAttribute("IOTBack")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IOTBack")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

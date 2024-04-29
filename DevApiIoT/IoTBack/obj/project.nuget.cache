@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sbxTUFIQUuFV7vfwuS6cYsnl8L3b5rklEwwOresWB4aeMLpvaRg6mec4aAPB4d56urpiNAfZ41sdVUyJWg797w==",
+  "dgSpecHash": "yNyulDKwDCUzeq1ltWiMjfyDmIqi++L/fblxYtwtYcxpwqcryKa55pHPP2y09FVCX+GyFu81n0cBi7RRik3Ylg==",
   "success": true,
-  "projectFilePath": "C:\\PROJETO\\Repositorios\\DevApiIoT\\IoTBack\\IOTBack.csproj",
+  "projectFilePath": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\IOTBack.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pj\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\pj\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
@@ -223,5 +223,16 @@
     "C:\\Users\\pj\\.nuget\\packages\\zstdsharp.port\\0.7.1\\zstdsharp.port.0.7.1.nupkg.sha512",
     "C:\\Users\\pj\\.nuget\\packages\\zstring\\2.5.1\\zstring.2.5.1.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'Azure.Identity' 1.10.4 tem uma moderado vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-wvxc-855f-jvrv",
+      "libraryId": "Azure.Identity",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

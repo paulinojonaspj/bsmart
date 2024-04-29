@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\PROJETO\\Repositorios\\DevApiIoT\\IoTBack\\IOTBack.csproj": {}
+    "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\IOTBack.csproj": {}
   },
   "projects": {
-    "C:\\PROJETO\\Repositorios\\DevApiIoT\\IoTBack\\IOTBack.csproj": {
+    "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\IOTBack.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\PROJETO\\Repositorios\\DevApiIoT\\IoTBack\\IOTBack.csproj",
+        "projectUniqueName": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\IOTBack.csproj",
         "projectName": "IOTBack",
-        "projectPath": "C:\\PROJETO\\Repositorios\\DevApiIoT\\IoTBack\\IOTBack.csproj",
+        "projectPath": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\IOTBack.csproj",
         "packagesPath": "C:\\Users\\pj\\.nuget\\packages\\",
-        "outputPath": "C:\\PROJETO\\Repositorios\\DevApiIoT\\IoTBack\\obj\\",
+        "outputPath": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
