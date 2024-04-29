@@ -1,0 +1,27 @@
+<p>defer-leser works!</p>
+
+<table class="table">
+  <thead class="thead-light">
+    <th>Nomes</th>
+    <th>Opções</th>
+  </thead>
+  <tbody>
+
+    <td></td>
+
+    @for (dado of listas;  track $index) {
+    <tr>
+      <td>
+        <h1>{{ $index+1 }} - {{ dado.nome }}</h1>
+      </td>
+      <td>
+        <button class="btn btn-info">Remover </button></td>
+    </tr>
+
+    } @empty {
+    <tr>
+      <td colspan="2">Lista Vazia</td>
+    </tr>
+    }
+  </tbody>
+</table>

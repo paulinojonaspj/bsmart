@@ -1,0 +1,65 @@
+<section class="h-100 gradient-form" style="background-color: #eee;">
+  <div class="container py-1 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-4 mx-md-4">
+
+                <div class="text-center">
+                  <img src="/assets/logo.png" style="width: 185px;" alt="logo">
+                  <h4 class="mt-1 mb-3 pb-1">Bem-Vindo à B-SMART</h4>
+                </div>
+
+                <form [formGroup]="form">
+
+                  <div class="form-outline mb-2">
+                    <input type="text" id="Utilizador" class="form-control" formControlName="Utilizador"
+                      placeholder="Telemóvel ou Email" />
+                    <label class="form-label" for="Utilizador">Utilizador <sup>*</sup></label>
+                  </div>
+
+                  <div class="form-outline mb-2">
+                    <input type="password" id="PalavraPasse" class="form-control" formControlName="PalavraPasse" />
+                    <label class="form-label" for="PalavraPasse">Palavra-passe <sup>*</sup></label>
+                  </div>
+
+                  <div class="text-center pt-1 mb-1 pb-1">
+                    @if(permitido==1){
+                    <div class="alert alert-success align-items-center p-1" role="alert">
+                      <div>
+                        Acesso Permitido
+                      </div>
+                    </div>
+                  }
+                  @if(permitido==2){
+                    <div class="alert alert-danger align-items-center p-1"  role="alert">
+                      <div>
+                           {{ mensagem }}
+                      </div>
+                    </div>
+                  }
+                    <button (click)="entrar()" class="btn btn-outline-primary btn-block mb-1" type="button">Entrar</button>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center pb-1">
+                    <button type="button" class="btn btn-outline-secondary">Recuperar a conta</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h4 class="mb-4">Controlo Eficiente de Energia e Água</h4>
+                <p class="small mb-0">É com enorme entusiasmo que damos as boas-vindas à nossa aplicação inovadora, a
+                  B-SMART. Desenvolvida para proporcionar uma gestão inteligente e económica do consumo de energia e
+                  água em edifícios, a B-SMART utiliza tecnologias IoT de baixo custo para oferecer uma solução
+                  acessível e eficaz.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

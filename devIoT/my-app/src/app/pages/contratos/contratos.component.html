@@ -1,0 +1,229 @@
+<form [formGroup]="form">
+  <div class="container row">
+
+
+    <div class="col-md-12 row mt-2">
+      <h5>Dados do utilizador</h5>
+      <div class="col-md-6">
+
+        <input type="hidden" class="form-control" id="floatingInput" formControlName="Id">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" formControlName="Nome">
+          <label for="floatingInput">Nome Completo</label>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" id="floatingInput" formControlName="Email">
+          <label for="floatingInput">Email</label>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" formControlName="Telemovel">
+          <label for="floatingInput">Telemóvel</label>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput"
+            (keyup)="this.morada='Cliquei aqui para pesquisar a morada.'" [(ngModel)]="codigoPostal"
+            (blur)="getCodigoPosta()" formControlName="CodigoPostal">
+          <label for="floatingInput">Código Postal</label>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" [(ngModel)]="morada" readonly id="floatingInput"
+            formControlName="Morada">
+          <label for="floatingInput">Morada</label>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" formControlName="CasaNumero">
+          <label for="floatingInput">Casa Nº</label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-md-12 row" style="margin-top: 30px;">
+      <hr>
+      <h5>Contrato Água</h5>
+
+      <div class="col-md-6">
+
+
+        <div class="form-floating md-3">
+          <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+            formControlName="OperadoraAgua">
+            <option selected></option>
+            <option>EPAL - Empresa Portuguesa das Águas Livres</option>
+            <option>Águas de Portugal</option>
+            <option>AdP - Águas de Portugal</option>
+          </select>
+          <label for="floatingSelect">Operadora</label>
+        </div>
+
+      </div>
+
+      <div class="col-md-3">
+
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" id="floatingInput" formControlName="PrecoFixoAgua">
+          <label for="floatingInput">Preço fixo Mes (Tafiários e Taxas)</label>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" id="floatingInput" formControlName="PrecoAgua">
+          <label for="floatingInput">Preço de consumo (m<sup>3</sup>)</label>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-12 row" style="margin-top: 30px;">
+      <hr>
+      <h5>Contrato Energia</h5>
+      <div class="col-md-4">
+        <div class="form-floating mb-3">
+          <div class="form-floating">
+            <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+              formControlName="OperadoraEnergia">
+              <option selected></option>
+              <option>EDP - Energias de Portugal</option>
+              <option>Galp Energia</option>
+              <option>Endesa</option>
+              <option>Iberdrola</option>
+              <option>Goldenergy</option>
+              <option>Energia Simples</option>
+              <option>AXPO Portugal</option>
+              <option>Altri Energias</option>
+              <option>Enat</option>
+            </select>
+            <label for="floatingSelect">Operadora</label>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-floating">
+          <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+            formControlName="TarifaEnergia">
+            <option selected></option>
+            <option>Simples</option>
+            <option>Bi-Horária</option>
+            <option>Tri-Horária</option>
+          </select>
+          <label for="floatingSelect">Tarifas</label>
+        </div>
+      </div>
+      <div class="col-md-3">
+
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" id="floatingInput" formControlName="PotenciaEnergia">
+          <label for="floatingInput">Potência contratada (kVA)</label>
+        </div>
+      </div>
+      <div class="col-md-3" style="margin-bottom: 25px;">
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" id="floatingInput" formControlName="PrecoFixoEnergia">
+          <label for="floatingInput">Valor fixo Mês</label>
+        </div>
+      </div>
+
+      <div class="col-md-4" style="background-color: rgb(201, 255, 207);">
+        <div class="form-floating mb-3" style="margin-top: 20px;">
+          <input type="number" class="form-control" id="floatingInput" formControlName="PrecoP1Energia">
+          <label for="floatingInput">Preço consumo 1º Periodo (kWh) - Ponta</label>
+        </div>
+      </div>
+
+      <div class="col-md-4" style="background-color: beige;">
+        <div class="form-floating mb-3" style="margin-top: 20px;">
+          <input type="number" class="form-control" id="floatingInput" formControlName="PrecoP2Energia">
+          <label for="floatingInput">Preço consumo 2º Periodo (kWh) - Cheia</label>
+        </div>
+      </div>
+
+      <div class="col-md-4" style="background-color: rgb(240, 240, 240);">
+        <div class="form-floating mb-3" style="margin-top: 20px;">
+          <input type="number" class="form-control" id="floatingInput" formControlName="PrecoP3Energia">
+          <label for="floatingInput">Preço consumo 3º Periodo (kWh) - Vazio</label>
+        </div>
+      </div>
+
+      <div class="col-md-4" style="background-color: rgb(201, 255, 207); ">
+        <label>Horário 1º Periodo (kWh):</label>
+        <div class="row" style="margin-bottom: 25px;">
+          <div class="col-md-6">
+            <div class="form-floating mb-3">
+              <input type="time" class="form-control" id="floatingInput" formControlName="HorarioDeP1Energia">
+              <label for="floatingInput">De </label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating mb-3">
+              <input type="time" class="form-control" id="floatingInput" formControlName="HorarioAteP1Energia">
+              <label for="floatingInput">Até</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4" style="background-color: beige;">
+        <label>Horário 2º Periodo (kWh):</label>
+        <div class="row" style="margin-bottom: 25px;">
+          <div class="col-md-6">
+            <div class="form-floating mb-3">
+              <input type="time" class="form-control" id="floatingInput" formControlName="HorarioDeP2Energia">
+              <label for="floatingInput">De</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating mb-3">
+              <input type="time" class="form-control" id="floatingInput" formControlName="HorarioAteP2Energia">
+              <label for="floatingInput">Até</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4" style="background-color: rgb(240, 240, 240);">
+        <label>Horário 3º Periodo (kWh):</label>
+        <div class="row" style="margin-bottom: 25px;">
+          <div class="col-md-6">
+            <div class="form-floating mb-3">
+              <input type="time" class="form-control" id="floatingInput" formControlName="HorarioDeP3Energia">
+              <label for="floatingInput">De</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating mb-3">
+              <input type="time" class="form-control" id="floatingInput" formControlName="HorarioAteP3Energia">
+              <label for="floatingInput">Até</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" style="margin-top: 20px;">
+
+        <button type="button" (click)="atualizar()" class="btn btn-outline-primary" style="float: right;">Atualizar
+          Informações</button>
+      </div>
+
+    </div>
+
+  </div>
+</form>
+<br>
+<hr>

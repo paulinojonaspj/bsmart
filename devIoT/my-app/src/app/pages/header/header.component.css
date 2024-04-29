@@ -1,0 +1,9 @@
+.btn-outline-success:hover .nav-link {
+  color: white !important;
+}
+
+.iconMenu:hover {
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration-line: underline;
+}

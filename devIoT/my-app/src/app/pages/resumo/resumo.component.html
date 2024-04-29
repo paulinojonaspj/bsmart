@@ -1,0 +1,237 @@
+<div class="row">
+  <div class="row mt-1">
+    <div class="col-2"></div>
+    <div class="col-4">
+      <div class="form-floating">
+        <select [(ngModel)]="ano" class="form-select" id="floatingSelect" (change)="filtrar()"
+          aria-label="Floating label select example">
+
+          <option>2024</option>
+          <option>2025</option>
+        </select>
+        <label for="floatingSelect">Ano</label>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="form-floating">
+        <select class="form-select" id="floatingSelect" aria-label="Floating label select example" (change)="filtrar()"
+          [(ngModel)]="mes">
+          <option>Janeiro</option>
+          <option>Fevereiro</option>
+          <option>Março</option>
+          <option>Abril</option>
+          <option>Maio</option>
+          <option>Junho</option>
+          <option>Julho</option>
+          <option>Agosto</option>
+          <option>Setembro</option>
+          <option>Outubro</option>
+          <option>Novembro</option>
+          <option>Dezembro</option>
+        </select>
+        <label for="floatingSelect">Mes</label>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 row" style="border-right: solid 2px green; margin-top: 20px;  ">
+    <h6 style="text-align: center;">FATURAÇÃO ATUAL</h6>
+    <div class="col-md-6">
+      <div #chartGaugeAgua style="width: 100%; height: 300px;"></div>
+
+    </div>
+
+    <div class="col-md-6">
+      <div #chartGaugeEnergia style="width: 100%; height: 300px;"></div>
+
+    </div>
+  </div>
+  <div class="col-md-6 row" style=" margin-top: 20px; ">
+    <h6 style="text-align: center;">FATURAÇÃO PREVISTA</h6>
+    <div class="col-md-6">
+      <div #chartGaugePrevistoAgua style="width: 100%; height: 300px;"></div>
+    </div>
+
+    <div class="col-md-6">
+      <div #chartGaugePrevistoEnergia style="width: 100%; height: 300px; "></div>
+    </div>
+  </div>
+
+  <div class="col-md-12 row" style="margin-bottom: 30px; border: 1px solid green; padding: 30px;">
+    <div style="margin-bottom: 5px;">
+      <button data-bs-toggle="modal" [(ngModel)]="registar" (click)="registar=1" data-bs-target="#exampleModal"
+        class="btn btn-outline-primary">Registar Interruptor</button>
+    </div>
+    @for(inter of interruptor; track inter.ligado){
+    <div class="col-6 col-sm-6 col-xl-3">
+
+      <div style="text-align: center; font-size: 8pt;">
+        <label class="fa fa-pencil" style="cursor: pointer;" [(ngModel)]="registar" (click)="registar=0"
+          data-bs-toggle="modal" data-bs-target="#exampleModal"> Editar</label>
+        @if(inter.ligado==1){
+        <button class="btn btn-outline-success" (click)="ligar(inter.id,0)">
+          <p>{{ inter.id }}-{{ inter.localizacao }}</p>
+          <img style="width: 80%; cursor: pointer;" src="/assets/iLigado.png">
+        </button>
+
+        }@else{
+        <button class="btn btn-outline-success" (click)="ligar(inter.id,1)">
+          <p>{{ inter.id }}-{{ inter.localizacao }}</p>
+          <img style="width: 70%; cursor: pointer;" src="/assets/iDesligado.png">
+        </button>
+        }
+      </div>
+    </div>
+    }
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              {{ registar==1?"Registar Interruptor": "Atualizar Interruptor" }}
+            </h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form [formGroup]="form">
+            <div class="modal-body">
+              <p>
+                <label>Referência</label>
+                <input type="number" class="form-control" formControlName="referencia">
+              </p>
+              <p>
+                <label>Descrição</label>
+                <input type="text" class="form-control" formControlName="descricao">
+              </p>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+              <button type="button" class="btn btn-primary">Confirmar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table-sm table-bordered" style="font-size: 10pt; width: 100%;">
+          <thead>
+            <th colspan="3">CONSUMO - ÁGUA <br>
+              <span>Preço Fixo Mês: {{ precoFixoAgua.toFixed(2).toLocaleString() }} &euro; --- Preço Consumo /
+                m<sup>3</sup>: {{
+                precoConsumoAgua.toFixed(2).toLocaleString() }} &euro;</span>
+            </th>
+          </thead>
+          <thead>
+
+            <th>Local</th>
+            <th>Consumo</th>
+
+
+            <th>Faturação</th>
+          </thead>
+
+          <tbody>
+            @for(consumo of consumoAguaTable;track consumo){
+            <tr>
+              <td>{{ consumo.localizacao }}<br>{{ consumo.escala?consumo.escala:"-" }}</td>
+              <td>Atual: {{ (consumo.quantidade/1000).toFixed(2).toLocaleString() }} L<br>Média: {{
+                ((consumo.quantidade/1000)/diaAtual).toFixed(2).toLocaleString() }} L</td>
+
+              <td>Atual: {{ ((consumo.quantidade/1000/1000)* precoConsumoAgua).toFixed(2).toLocaleString() }} &euro;<br>
+                Previsto: {{ (((((consumo.quantidade/1000/1000)*
+                precoConsumoAgua)/diaAtual)*diasMes)).toFixed(2).toLocaleString() }}
+                &euro;</td>
+            </tr>
+            }
+            <tr style="font-weight: bold;">
+              <td>TOTAL</td>
+              <td>Atual: {{ (calcularTotalConsumoAgua/1000).toFixed(2).toLocaleString() }} L<br>
+                Média: {{ ((calcularTotalConsumoAgua/1000)/diaAtual).toFixed(2).toLocaleString() }} L</td>
+
+              <td>Atual: {{ (((calcularTotalConsumoAgua/1000/1000)* precoConsumoAgua) +
+                precoFixoAgua).toFixed(2).toLocaleString() }}
+                &euro;
+                <br>
+                Previsto: {{ ((((((calcularTotalConsumoAgua*precoConsumoAgua)/1000/1000)/diaAtual))*diasMes) +
+                precoFixoAgua).toFixed(2).toLocaleString() }} &euro;
+              </td>
+            </tr>
+            <tr style="font-weight: bold;">
+              <td colspan="2">OBJETIVO</td>
+
+              <td>{{ objetivoAgua.toFixed(2).toLocaleString() }} &euro;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-md-6">
+        <table class="table-sm  table-bordered" style="font-size: 10pt; width: 100%;">
+          <thead>
+            <th colspan="3">CONSUMO ENERGIA<br>
+              <span>Preço Fixo Mês: {{ precoFixoEnergia.toFixed(2).toLocaleString() }} &euro; --- Preço Consumo / kWh:
+                {{
+                precoConsumoEnergia.toFixed(2).toLocaleString() }} &euro;</span>
+            </th>
+          </thead>
+          <thead>
+
+            <th>Local</th>
+            <th>Consumo</th>
+            <th>Faturação</th>
+          </thead>
+
+          <tbody>
+            @for(consumo of consumoEnergiaTable;track consumo){
+            <tr>
+              <td>{{ consumo.localizacao }}</td>
+              <td>Atual: {{ (consumo.quantidade/3600).toFixed(2).toLocaleString() }} kWh<br>Média: {{
+                ((consumo.quantidade/3600)/
+                diaAtual).toFixed(2).toLocaleString() }} kWh</td>
+              <td>Atual: {{(consumo.quantidade/3600* precoConsumoEnergia).toFixed(2).toLocaleString() }} &euro;<br>
+                Previsto: {{ (((consumo.quantidade/3600*
+                precoConsumoEnergia)/diaAtual)*diasMes).toFixed(2).toLocaleString() }}
+                &euro;
+              </td>
+            </tr>
+            }
+
+            <tr style="font-weight: bold;">
+              <td>TOTAL</td>
+              <td>Atual: {{ calcularTotalConsumoEnergia.toFixed(2).toLocaleString() }} kWh<br>
+                Média: {{ (calcularTotalConsumoEnergia/ diaAtual) .toFixed(2).toLocaleString() }} kWh
+              </td>
+              <td>Atual: {{ ((calcularTotalConsumoEnergia* precoConsumoEnergia) +
+                precoFixoEnergia).toFixed(2).toLocaleString() }}
+                &euro;<br>
+                Previsto: {{ ((((calcularTotalConsumoEnergia* precoConsumoEnergia)/ diaAtual)* diasMes) +
+                precoFixoEnergia).toFixed(2).toLocaleString() }} &euro;
+              </td>
+            </tr>
+            <tr style="font-weight: bold;">
+              <td colspan="2">OBJETIVO</td>
+
+              <td>{{ objetivoEnergia.toFixed(2).toLocaleString() }} &euro;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+  <!--
+  <div class="col-md-12">
+    <div #chartDiarioMensal style="width: 100%; height: 300px;"></div>
+  </div>
+
+  <div class="col-md-12" style="margin-top: 30px;">
+    <div #chartAnual style="width: 100%; height: 300px;"></div>
+  </div>
+  -->
+</div>
