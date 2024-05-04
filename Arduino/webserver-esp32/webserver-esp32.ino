@@ -2,6 +2,8 @@
 #include <HTTPClient.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
+#include "SD.h"
+#include "SPI.h"
 
 #define ONE_WIRE_BUS 4
 
@@ -12,14 +14,20 @@ DallasTemperature sensors(&oneWire);
 
 const char *ssid = "B-SMART";       // Coloque o SSID da sua rede WiFi
 const char *password = "paulino123";   // Coloque a senha da sua rede WiFi
-const char *url = "http://192.168.7.10:8080/api/v1/consumo";
-//const char *url = "http://192.168.7.100:8080/api/v1/consumo";
+//const char *url = "http://192.168.7.10:8080/api/v1/consumo";
+//const char *url = "http://192.168.7.10:8080/api/v1/consumo";
+
+File file;
+String url="";
+String tipo;
+String local="";
+String localizacao="";
 
 byte statusLed    = 13;
 
-byte ledLigado    = 5;
+byte ledLigado    = 12; //5  //12
 byte ledWifi    = 17;
-byte ledAgua    = 18;
+byte ledAgua    = 27; //18 //14
 float escala=300;
 String requestBody="";
 
@@ -42,7 +50,42 @@ unsigned long oldTime;
 
 void setup()
 {
+ Serial.begin(9600);
+ // Inicializa o cartão SD com a porta CS definida como 5
+  if(!SD.begin(5)){
+    Serial.println("Falha ao montar o cartão SD");
+    return;
+  }
 
+   // Abre o arquivo "bsmart.txt" para leitura
+  file = SD.open("/bsmart.txt");
+  
+  // Verifica se o arquivo foi aberto corretamente
+  if(!file){
+    Serial.println("Falha ao abrir o arquivo");
+    return;
+  }
+  
+  // Lê o conteúdo das três primeiras linhas do arquivo
+  if(file.available()){
+    url = file.readStringUntil('\n');
+  }
+  if(file.available()){
+    tipo = file.readStringUntil('\n');
+  }
+  if(file.available()){
+    local = file.readStringUntil('\n');
+  }
+  
+  // Fecha o arquivo
+  file.close();
+  
+  // Imprime as variáveis no console serial
+    Serial.println("-----");
+  Serial.println("url: " + url);
+  Serial.println("tipo: " + tipo);
+  Serial.println("local: " + local);
+  
      pinMode(statusLed, OUTPUT);
      pinMode(ledLigado, OUTPUT);
      pinMode(ledWifi, OUTPUT);
@@ -55,8 +98,7 @@ void setup()
   pinMode(sensorPin, INPUT_PULLUP);  // Enable internal pull-up resistor for ESP32
 
   digitalWrite(ledLigado, HIGH);
-  // Initialize a serial connection for reporting values to the host
-  Serial.begin(9600);
+ 
  sensors.begin();
 
   // Conectar ao WiFi
@@ -159,32 +201,54 @@ void loop()
        digitalWrite(ledAgua, HIGH);
     
         HTTPClient http;
-        http.begin(url);
-        http.addHeader("Content-Type", "application/json");
+        url.trim();
+        local.trim();
+        localizacao = local;
         http.begin(url);
         http.addHeader("Content-Type", "application/json");
         if(escala==300){
-             requestBody = "{\"tipo\": \"AGUA\", \"localizacao\": \"CENTRAL\", \"escala\": \"\", \"quantidade\": " + String(totalMilliLitres) + "}";
+            
+             requestBody = "{\"tipo\": \"AGUA\", \"localizacao\": \"" + localizacao + "\", \"escala\": \"\", \"quantidade\": " + String(totalMilliLitres) + "}";
              Serial.println("Escala: - ");
         }else if(escala>40){
-             requestBody = "{\"tipo\": \"AGUA\", \"localizacao\": \"CENTRAL\", \"escala\": \"Muito quente\", \"quantidade\": " + String(totalMilliLitres) + "}";
+      
+                requestBody = "{\"tipo\": \"AGUA\", \"localizacao\": \"" + localizacao + "\", \"escala\": \"Muito quente\", \"quantidade\": " + String(totalMilliLitres) + "}";
                 Serial.println("Escala: Muito Quente "+String(tempC)+" C");
         }else if(escala >= 30 && escala <= 40){
-             requestBody = "{\"tipo\": \"AGUA\", \"localizacao\": \"CENTRAL\", \"escala\": \"Quente\", \"quantidade\": " + String(totalMilliLitres) + "}";
+   
+                requestBody = "{\"tipo\": \"AGUA\", \"localizacao\": \"" + localizacao + "\", \"escala\": \"Quente\", \"quantidade\": " + String(totalMilliLitres) + "}";
                 Serial.println("Escala: Quente"+String(tempC)+" C");
         }else if(escala >= 20 && escala < 30){
-             requestBody = "{\"tipo\": \"AGUA\", \"localizacao\": \"CENTRAL\", \"escala\": \"Normal\", \"quantidade\": " + String(totalMilliLitres) + "}";
+             // Defina a palavra central em uma variável
+               
+                requestBody = "{\"tipo\": \"AGUA\", \"localizacao\": \"" + localizacao + "\", \"escala\": \"Normal\", \"quantidade\": " + String(totalMilliLitres) + "}";
                 Serial.println("Escala: Normal "+String(tempC)+" C");
         }else if(escala >= 10 && escala < 20){
-             requestBody = "{\"tipo\": \"AGUA\", \"localizacao\": \"CENTRAL\", \"escala\": \"Fria\", \"quantidade\": " + String(totalMilliLitres) + "}";
+          
+                requestBody = "{\"tipo\": \"AGUA\", \"localizacao\": \"" + localizacao + "\", \"escala\": \"Fria\", \"quantidade\": " + String(totalMilliLitres) + "}";
                 Serial.println("Escala: Fria "+String(tempC)+" C");
         }else{ 
-             requestBody = "{\"tipo\": \"AGUA\", \"localizacao\": \"CENTRAL\", \"escala\": \"Muito fria\", \"quantidade\": " + String(totalMilliLitres) + "}";
+          
+                requestBody = "{\"tipo\": \"AGUA\", \"localizacao\": \"" + localizacao + "\", \"escala\": \"Muito fria\", \"quantidade\": " + String(totalMilliLitres) + "}";
                 Serial.println("Escala: Muito fria " +String(tempC)+" C");
         }
        
         
-        http.POST(requestBody);
+     int httpResponseCode = http.POST(requestBody);
+      Serial.println(url);
+    if(httpResponseCode > 0) {
+      Serial.print("Código de resposta: ");
+      Serial.println(httpResponseCode);
+      
+      String response = http.getString();
+      Serial.println("Resposta:");
+      Serial.println(response);
+      
+    } else {
+      Serial.print("Erro na solicitação. Código de erro: ");
+      Serial.println(httpResponseCode);
+    }
+    
         totalMilliLitres=0;
         http.end();
     }else{
