@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{46FE9B4C-24BF-47A9-BDE7-DAA02BA497DF}|IOTBack.csproj|c:\\projeto\\repositorios\\bsmart\\devapiiot\\iotback\\controllers\\consumocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46FE9B4C-24BF-47A9-BDE7-DAA02BA497DF}|IOTBack.csproj|solutionrelative:controllers\\consumocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{46FE9B4C-24BF-47A9-BDE7-DAA02BA497DF}|IOTBack.csproj|c:\\projeto\\repositorios\\bsmart\\devapiiot\\iotback\\controllers\\bsmart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{46FE9B4C-24BF-47A9-BDE7-DAA02BA497DF}|IOTBack.csproj|solutionrelative:controllers\\bsmart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{46FE9B4C-24BF-47A9-BDE7-DAA02BA497DF}|IOTBack.csproj|c:\\projeto\\repositorios\\bsmart\\devapiiot\\iotback\\controllers\\consumocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{46FE9B4C-24BF-47A9-BDE7-DAA02BA497DF}|IOTBack.csproj|solutionrelative:controllers\\consumocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{46FE9B4C-24BF-47A9-BDE7-DAA02BA497DF}|IOTBack.csproj|c:\\projeto\\repositorios\\bsmart\\devapiiot\\iotback\\controllers\\utilizadorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46FE9B4C-24BF-47A9-BDE7-DAA02BA497DF}|IOTBack.csproj|solutionrelative:controllers\\utilizadorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46FE9B4C-24BF-47A9-BDE7-DAA02BA497DF}|IOTBack.csproj|c:\\projeto\\repositorios\\bsmart\\devapiiot\\iotback\\controllers\\smscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46FE9B4C-24BF-47A9-BDE7-DAA02BA497DF}|IOTBack.csproj|solutionrelative:controllers\\smscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{46FE9B4C-24BF-47A9-BDE7-DAA02BA497DF}|IOTBack.csproj|c:\\projeto\\repositorios\\bsmart\\devapiiot\\iotback\\model\\consumo\\dtos\\consumodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,47 +66,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IConsumo.cs",
-              "DocumentMoniker": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Model\\Consumo\\IConsumo.cs",
-              "RelativeDocumentMoniker": "Model\\Consumo\\IConsumo.cs",
-              "ToolTip": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Model\\Consumo\\IConsumo.cs",
-              "RelativeToolTip": "Model\\Consumo\\IConsumo.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-20T13:44:49.73Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ConsumoDTO.cs",
-              "DocumentMoniker": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Model\\Consumo\\DTOs\\ConsumoDTO.cs",
-              "RelativeDocumentMoniker": "Model\\Consumo\\DTOs\\ConsumoDTO.cs",
-              "ToolTip": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Model\\Consumo\\DTOs\\ConsumoDTO.cs",
-              "RelativeToolTip": "Model\\Consumo\\DTOs\\ConsumoDTO.cs",
+              "Title": "UtilizadorController.cs",
+              "DocumentMoniker": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Controllers\\UtilizadorController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UtilizadorController.cs",
+              "ToolTip": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Controllers\\UtilizadorController.cs",
+              "RelativeToolTip": "Controllers\\UtilizadorController.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAowAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-11T14:41:46.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SmsController.cs",
+              "DocumentMoniker": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Controllers\\SmsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SmsController.cs",
+              "ToolTip": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Controllers\\SmsController.cs",
+              "RelativeToolTip": "Controllers\\SmsController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-20T13:39:58.287Z"
+              "WhenOpened": "2024-05-11T14:41:42.529Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAgwB0AAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-04-05T19:49:54.384Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Interruptor.cs",
               "DocumentMoniker": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Model\\Interruptor.cs",
               "RelativeDocumentMoniker": "Model\\Interruptor.cs",
@@ -110,7 +108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Objetivo.cs",
               "DocumentMoniker": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Model\\Objetivo\\Objetivo.cs",
               "RelativeDocumentMoniker": "Model\\Objetivo\\Objetivo.cs",
@@ -122,7 +120,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "Consumo.cs",
               "DocumentMoniker": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Model\\Consumo\\Consumo.cs",
               "RelativeDocumentMoniker": "Model\\Consumo\\Consumo.cs",
@@ -135,31 +133,68 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ConsumoController.cs",
-              "DocumentMoniker": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Controllers\\ConsumoController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ConsumoController.cs",
-              "ToolTip": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Controllers\\ConsumoController.cs",
-              "RelativeToolTip": "Controllers\\ConsumoController.cs",
-              "ViewState": "AQIAADIAAAAAAAAAAAAwwDsAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-20T11:59:46.664Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Bsmart.cs",
               "DocumentMoniker": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Controllers\\Bsmart.cs",
               "RelativeDocumentMoniker": "Controllers\\Bsmart.cs",
               "ToolTip": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Controllers\\Bsmart.cs",
               "RelativeToolTip": "Controllers\\Bsmart.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAowA4AAABOAAAA",
+              "ViewState": "AQIAADEAAAAAAAAAAAAcwEgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-29T19:50:48.44Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
+              "Title": "ConsumoController.cs",
+              "DocumentMoniker": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Controllers\\ConsumoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ConsumoController.cs",
+              "ToolTip": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Controllers\\ConsumoController.cs*",
+              "RelativeToolTip": "Controllers\\ConsumoController.cs*",
+              "ViewState": "AQIAAEgAAAAAAAAAAAAQwDAAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T11:59:46.664Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAgwB0AAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-05T19:49:54.384Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ConsumoDTO.cs",
+              "DocumentMoniker": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Model\\Consumo\\DTOs\\ConsumoDTO.cs",
+              "RelativeDocumentMoniker": "Model\\Consumo\\DTOs\\ConsumoDTO.cs",
+              "ToolTip": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Model\\Consumo\\DTOs\\ConsumoDTO.cs",
+              "RelativeToolTip": "Model\\Consumo\\DTOs\\ConsumoDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T13:39:58.287Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IConsumo.cs",
+              "DocumentMoniker": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Model\\Consumo\\IConsumo.cs",
+              "RelativeDocumentMoniker": "Model\\Consumo\\IConsumo.cs",
+              "ToolTip": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Model\\Consumo\\IConsumo.cs",
+              "RelativeToolTip": "Model\\Consumo\\IConsumo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T13:44:49.73Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "RConsumo.cs",
               "DocumentMoniker": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Model\\Consumo\\RConsumo.cs",
               "RelativeDocumentMoniker": "Model\\Consumo\\RConsumo.cs",
@@ -171,7 +206,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
@@ -183,7 +218,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "FConsumo.cs",
               "DocumentMoniker": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Model\\Consumo\\FConsumo.cs",
               "RelativeDocumentMoniker": "Model\\Consumo\\FConsumo.cs",
@@ -195,7 +230,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "ConnectionContext.cs",
               "DocumentMoniker": "C:\\PROJETO\\Repositorios\\bsmart\\DevApiIoT\\IoTBack\\Configuracao\\ConnectionContext.cs",
               "RelativeDocumentMoniker": "Configuracao\\ConnectionContext.cs",
@@ -203,8 +238,7 @@
               "RelativeToolTip": "Configuracao\\ConnectionContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwBEAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-30T15:45:40.821Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-30T15:45:40.821Z"
             }
           ]
         }
