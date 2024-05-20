@@ -7,7 +7,9 @@ const startVideo = () => {
                 navigator.getUserMedia(
                     {
                         video: {
-                            deviceId: devices[0].deviceId
+                              //4 - Camera Nova
+                              //0 - ivCam
+                            deviceId: devices[4].deviceId
                         }
                     },
                     stream => cam.srcObject = stream,

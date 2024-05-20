@@ -13,80 +13,202 @@
           </th>
         </tr>
         <tr>
-
+          <th> </th>
+          <th colspan="2">Água</th>
+          <th colspan="2">Energia</th>
+        </tr>
+        <tr>
           <th>Mês</th>
-          <th>Água <span class="btn btn-outline-success" (click)="this.tipo='AGUA';edit()" data-bs-toggle="modal"
-              data-bs-target="#exampleModal"><span class="fa fa-pencil"></span></span></th>
-          <th>Energia <span class="btn btn-outline-success" (click)="this.tipo='ENERGIA';edit()" data-bs-toggle="modal"
-              data-bs-target="#exampleModal"><span class="fa fa-pencil"></span></span></th>
+          <th><span class="btn btn-outline-success" (click)="this.tipo='AGUA';edit()" data-bs-toggle="modal"
+              data-bs-target="#exampleModal"><span class="fa fa-pencil"></span> Objetivos</span></th>
+          <th><span class="btn btn-outline-success" (click)="this.tipo='AGUA';edit(1)" data-bs-toggle="modal"
+              data-bs-target="#exampleModal"><span class="fa fa-pencil"></span> Notificação</span></th>
+
+          <th><span class="btn btn-outline-success" (click)="this.tipo='ENERGIA';edit()" data-bs-toggle="modal"
+              data-bs-target="#exampleModal"><span class="fa fa-pencil"></span> Objetivos</span></th>
+
+          <th><span class="btn btn-outline-success" (click)="this.tipo='ENERGIA';edit(1)" data-bs-toggle="modal"
+              data-bs-target="#exampleModal"><span class="fa fa-pencil"></span> Notificação</span></th>
         </tr>
       </thead>
       <tbody>
         <tr>
 
           <td>Janeiro</td>
-          <td>{{ this.filtroObjetivosAgua?.janeiro }} &euro;</td>
-          <td>{{ this.filtroObjetivosEnergia?.janeiro }} &euro;</td>
+          <td>{{ this.filtroObjetivosAgua?.janeiro }} &euro; [ aprox.: {{ (this.filtroObjetivosAgua!.janeiro/
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+          <td>{{ getNotificacao("AGUA").janeiro }} &euro; [ aprox.: {{ (getNotificacao("AGUA").janeiro /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
+          <td>{{ this.filtroObjetivosEnergia?.janeiro }} &euro; [ aprox.: {{ (this.filtroObjetivosEnergia!.janeiro/
+            precoConsumoEnergia).toFixed(2) }} Kw ]</td>
+          <td>{{ getNotificacao("ENERGIA").janeiro }} &euro; [ aprox.: {{ (getNotificacao("ENERGIA").janeiro /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
+
         </tr>
         <tr>
           <td>Fevereiro</td>
-          <td>{{ this.filtroObjetivosAgua?.fevereiro }} &euro;</td>
-          <td>{{ this.filtroObjetivosEnergia?.fevereiro }} &euro;</td>
+          <td>{{ this.filtroObjetivosAgua?.fevereiro }} &euro; [ aprox.: {{ (this.filtroObjetivosAgua!.fevereiro/
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+          <td>{{ getNotificacao("AGUA").fevereiro }} &euro; [ aprox.: {{ (getNotificacao("AGUA").fevereiro /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
+          <td>{{ this.filtroObjetivosEnergia?.fevereiro }} &euro; [ aprox.: {{ (this.filtroObjetivosEnergia!.fevereiro/
+            precoConsumoEnergia).toFixed(2) }} Kw ]</td>
+          <td>{{ getNotificacao("ENERGIA").fevereiro }} &euro; [ aprox.: {{ (getNotificacao("ENERGIA").fevereiro /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
         </tr>
         <tr>
           <td>Março</td>
-          <td>{{ this.filtroObjetivosAgua?.marco }} &euro;</td>
-          <td>{{ this.filtroObjetivosEnergia?.marco }} &euro;</td>
+          <td>{{ this.filtroObjetivosAgua?.marco }} &euro; [ aprox.: {{ (this.filtroObjetivosAgua!.marco/
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+          <td>{{ getNotificacao("AGUA").marco }} &euro; [ aprox.: {{ (getNotificacao("AGUA").marco /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
+
+          <td>{{ this.filtroObjetivosEnergia?.marco }} &euro; [ aprox.: {{ (this.filtroObjetivosEnergia!.marco/
+            precoConsumoEnergia).toFixed(2) }} Kw ]</td>
+          <td>{{ getNotificacao("ENERGIA").marco }} &euro; [ aprox.: {{ (getNotificacao("ENERGIA").marco /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
         </tr>
         <tr>
           <td>Abril</td>
-          <td>{{ this.filtroObjetivosAgua?.abril }} &euro;</td>
-          <td>{{ this.filtroObjetivosEnergia?.abril }} &euro;</td>
+          <td>{{ this.filtroObjetivosAgua?.abril }} &euro; [ aprox.: {{ (this.filtroObjetivosAgua!.abril/
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+          <td>{{ getNotificacao("AGUA").abril }} &euro; [ aprox.: {{ (getNotificacao("AGUA").abril /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
+
+          <td>{{ this.filtroObjetivosEnergia?.abril }} &euro; [ aprox.: {{ (this.filtroObjetivosEnergia!.abril/
+            precoConsumoEnergia).toFixed(2) }} Kw ]</td>
+          <td>{{ getNotificacao("ENERGIA").abril }} &euro; [ aprox.: {{ (getNotificacao("ENERGIA").abril /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
         </tr>
         <tr>
           <td>Maio</td>
-          <td>{{ this.filtroObjetivosAgua?.maio }} &euro;</td>
-          <td>{{ this.filtroObjetivosEnergia?.maio }} &euro;</td>
+          <td>{{ this.filtroObjetivosAgua?.maio }} &euro; [ aprox.: {{ (this.filtroObjetivosAgua!.maio/
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+          <td>{{ getNotificacao("AGUA").maio }} &euro; [ aprox.: {{ (getNotificacao("AGUA").maio /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
+
+          <td>{{ this.filtroObjetivosEnergia?.maio }} &euro; [ aprox.: {{ (this.filtroObjetivosEnergia!.maio/
+            precoConsumoEnergia).toFixed(2) }} Kw ]</td>
+          <td>{{ getNotificacao("ENERGIA").maio }} &euro; [ aprox.: {{ (getNotificacao("ENERGIA").maio /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
         </tr>
         <tr>
           <td>Junho</td>
-          <td>{{ this.filtroObjetivosAgua?.junho }} &euro;</td>
-          <td>{{ this.filtroObjetivosEnergia?.junho }} &euro;</td>
+          <td>{{ this.filtroObjetivosAgua?.junho }} &euro; [ aprox.: {{ (this.filtroObjetivosAgua!.junho/
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+          <td>{{ getNotificacao("AGUA").junho }} &euro; [ aprox.: {{ (getNotificacao("AGUA").junho /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
+          <td>{{ this.filtroObjetivosEnergia?.junho }} &euro; [ aprox.: {{ (this.filtroObjetivosEnergia!.junho/
+            precoConsumoEnergia).toFixed(2) }} Kw ]</td>
+          <td>{{ getNotificacao("ENERGIA").junho }} &euro; [ aprox.: {{ (getNotificacao("ENERGIA").junho /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
         </tr>
         <tr>
           <td>Julho</td>
-          <td>{{ this.filtroObjetivosAgua?.julho }} &euro;</td>
-          <td>{{ this.filtroObjetivosEnergia?.julho }} &euro;</td>
+          <td>{{ this.filtroObjetivosAgua?.julho }} &euro; [ aprox.: {{ (this.filtroObjetivosAgua!.julho/
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+          <td>{{ getNotificacao("AGUA").julho }} &euro; [ aprox.: {{ (getNotificacao("AGUA").julho /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
+
+          <td>{{ this.filtroObjetivosEnergia?.julho }} &euro; [ aprox.: {{ (this.filtroObjetivosEnergia!.julho/
+            precoConsumoEnergia).toFixed(2) }} Kw ]</td>
+          <td>{{ getNotificacao("ENERGIA").julho }} &euro; [ aprox.: {{ (getNotificacao("ENERGIA").julho /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
         </tr>
         <tr>
           <td>Agosto</td>
-          <td>{{ this.filtroObjetivosAgua?.agosto }} &euro;</td>
-          <td>{{ this.filtroObjetivosEnergia?.agosto }} &euro;</td>
+          <td>{{ this.filtroObjetivosAgua?.agosto }} &euro; [ aprox.: {{ (this.filtroObjetivosAgua!.agosto/
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+          <td>{{ getNotificacao("AGUA").agosto }} &euro; [ aprox.: {{ (getNotificacao("AGUA").agosto /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
+
+          <td>{{ this.filtroObjetivosEnergia?.agosto }} &euro; [ aprox.: {{ (this.filtroObjetivosEnergia!.agosto/
+            precoConsumoEnergia).toFixed(2) }} Kw ]</td>
+          <td>{{ getNotificacao("ENERGIA").agosto }} &euro; [ aprox.: {{ (getNotificacao("ENERGIA").agosto /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
         </tr>
         <tr>
           <td>Setembro</td>
-          <td>{{ this.filtroObjetivosAgua?.setembro }} &euro;</td>
-          <td>{{ this.filtroObjetivosEnergia?.setembro }} &euro;</td>
+          <td>{{ this.filtroObjetivosAgua?.setembro }} &euro; [ aprox.: {{ (this.filtroObjetivosAgua!.setembro/
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+          <td>{{ getNotificacao("AGUA").setembro }} &euro; [ aprox.: {{ (getNotificacao("AGUA").setembro /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
+
+          <td>{{ this.filtroObjetivosEnergia?.setembro }} &euro; [ aprox.: {{ (this.filtroObjetivosEnergia!.setembro/
+            precoConsumoEnergia).toFixed(2) }} Kw ]</td>
+          <td>{{ getNotificacao("ENERGIA").setembro }} &euro; [ aprox.: {{ (getNotificacao("ENERGIA").setembro /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
         </tr>
         <tr>
           <td>Outubro</td>
-          <td>{{ this.filtroObjetivosAgua?.outubro }} &euro;</td>
-          <td>{{ this.filtroObjetivosEnergia?.outubro }} &euro;</td>
+          <td>{{ this.filtroObjetivosAgua?.outubro }} &euro; [ aprox.: {{ (this.filtroObjetivosAgua!.outubro/
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+          <td>{{ getNotificacao("AGUA").outubro }} &euro; [ aprox.: {{ (getNotificacao("AGUA").outubro /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
+
+          <td>{{ this.filtroObjetivosEnergia?.outubro }} &euro; [ aprox.: {{ (this.filtroObjetivosEnergia!.outubro/
+            precoConsumoEnergia).toFixed(2) }} Kw ]</td>
+          <td>{{ getNotificacao("ENERGIA").outubro }} &euro; [ aprox.: {{ (getNotificacao("ENERGIA").outubro /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
+
         </tr>
         <tr>
           <td>Novembro</td>
-          <td>{{ this.filtroObjetivosAgua?.novembro }} &euro;</td>
-          <td>{{ this.filtroObjetivosEnergia?.novembro }} &euro;</td>
+          <td>{{ this.filtroObjetivosAgua?.novembro }} &euro; [ aprox.: {{ (this.filtroObjetivosAgua!.novembro/
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+          <td>{{ getNotificacao("AGUA").novembro }} &euro; [ aprox.: {{ (getNotificacao("AGUA").novembro /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
+
+          <td>{{ this.filtroObjetivosEnergia?.novembro }} &euro; [ aprox.: {{ (this.filtroObjetivosEnergia!.novembro/
+            precoConsumoEnergia).toFixed(2) }} Kw ]</td>
+          <td>{{ getNotificacao("ENERGIA").novembro }} &euro; [ aprox.: {{ (getNotificacao("ENERGIA").novembro /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
         </tr>
         <tr>
           <td>Dezembro</td>
-          <td>{{ this.filtroObjetivosAgua?.dezembro }} &euro;</td>
-          <td>{{ this.filtroObjetivosEnergia?.dezembro }} &euro;</td>
+          <td>{{ this.filtroObjetivosAgua?.dezembro }} &euro; [ aprox.: {{ (this.filtroObjetivosAgua!.dezembro/
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+          <td>{{ getNotificacao("AGUA").dezembro }} &euro; [ aprox.: {{ (getNotificacao("AGUA").dezembro /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
+
+
+          <td>{{ this.filtroObjetivosEnergia?.dezembro }} &euro; [ aprox.: {{ (this.filtroObjetivosEnergia!.dezembro/
+            precoConsumoEnergia).toFixed(2) }} Kw ]</td>
+          <td>{{ getNotificacao("ENERGIA").dezembro }} &euro; [ aprox.: {{ (getNotificacao("ENERGIA").dezembro /
+            precoConsumoAgua).toFixed(2) }} m<sup>3</sup> ]</td>
+
         </tr>
         <tr>
           <td><b>Totais</b></td>
-          <td><b>{{ totalAgua }} &euro;</b></td>
-          <td><b>{{ totalEnergia }} &euro;</b></td>
+          <td colspan="2"><b>{{ totalAgua }} &euro; [ aprox.: {{ (totalAgua/ precoConsumoAgua).toFixed(2) }}
+              m<sup>3</sup> ]</b></td>
+
+          <td colspan="2"><b>{{ totalEnergia }} &euro; [ aprox.: {{ (totalEnergia/precoConsumoEnergia).toFixed(2) }} Kw
+              ]</b></td>
+
         </tr>
       </tbody>
     </table>
@@ -107,39 +229,39 @@
             <input min="0" type="hidden" class="form-control" formControlName="tipo">
             <input min="0" type="hidden" class="form-control" formControlName="ano">
             <div class="col-6">
-              <label>Janeiro</label>
+              <label>Janeiro &euro;</label>
               <input min="0" max="1000" type="number" class="form-control" formControlName="janeiro">
             </div>
             <div class="col-6">
-              <label>Fevereiro</label>
+              <label>Fevereiro &euro;</label>
               <input min="0" max="1000" type="number" class="form-control" formControlName="fevereiro">
             </div>
             <div class="col-6">
-              <label>Março</label>
+              <label>Março &euro;</label>
               <input min="0" max="1000" type="number" class="form-control" formControlName="marco">
             </div>
             <div class="col-6">
-              <label>Abril</label>
+              <label>Abril &euro;</label>
               <input min="0" max="1000" type="number" class="form-control" formControlName="abril">
             </div>
             <div class="col-6">
-              <label>Maio</label>
+              <label>Maio &euro;</label>
               <input min="0" max="1000" type="number" class="form-control" formControlName="maio">
             </div>
             <div class="col-6">
-              <label>Junho</label>
+              <label>Junho &euro;</label>
               <input min="0" max="1000" type="number" class="form-control" formControlName="junho">
             </div>
             <div class="col-6">
-              <label>Julho</label>
-              <input min="0" max="1000" type="number" class="form-control" formControlName="julho">
+              <label>Julho &euro;</label>
+              <input min="0" max="1000 " type="number" class="form-control" formControlName="julho">
             </div>
             <div class="col-6">
-              <label>Agosto</label>
+              <label>Agosto &euro;</label>
               <input min="0" max="1000" type="number" class="form-control" formControlName="agosto">
             </div>
             <div class="col-6">
-              <label>Setembro</label>
+              <label>Setembro &euro;</label>
               <input min="0" max="1000" type="number" class="form-control" formControlName="setembro">
             </div>
             <div class="col-6">
@@ -147,11 +269,11 @@
               <input min="0" max="1000" type="number" class="form-control" formControlName="outubro">
             </div>
             <div class="col-6">
-              <label>Novembro</label>
+              <label>Novembro &euro;</label>
               <input min="0" max="1000" type="number" class="form-control" formControlName="novembro">
             </div>
             <div class="col-6">
-              <label>Dezembro</label>
+              <label>Dezembro &euro;</label>
               <input min="0" max="1000" type="number" class="form-control" formControlName="dezembro">
             </div>
           </div>

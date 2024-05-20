@@ -22,6 +22,19 @@ export class ResumoService {
     return this.http.get<boolean>(environment.apiUrl + "/bsmart/ligar?id=" + id + "&ligado=" + valor)
   }
 
+  find(id: number) {
+    return this.http.get<InterruptorPost>(environment.apiUrl + "/bsmart/find/" + id);
+  }
+
+  remover(id: number) {
+    return this.http.delete<InterruptorPost>(environment.apiUrl + "/bsmart/interruptor?id=" + id);
+  }
+
+
+  guardar(dado: InterruptorPost) {
+    return this.http.post<InterruptorPost>(environment.apiUrl + "/bsmart/interruptor", dado);
+  }
+
 }
 export interface Consumo {
   id: number;
@@ -51,3 +64,7 @@ export interface Interruptor {
   created_at: Date;
 }
 
+export interface InterruptorPost {
+  id: number;
+  localizacao: string;
+}

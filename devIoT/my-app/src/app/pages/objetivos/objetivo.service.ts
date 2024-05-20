@@ -19,4 +19,15 @@ export class ObjetivoService {
     return this.http.put<boolean>(environment.apiUrl + "/bsmart/objetivos", values);
   }
 
+
+  getNotificacao() {
+    return this.http.get<Objetivo[]>(environment.apiUrl + "/bsmart/notificacao");
+  }
+
+  UpdateNotificacao(values: Objetivo) {
+    return this.http.put<boolean>(environment.apiUrl + "/bsmart/notificacao", values);
+  }
+
+
+
 }

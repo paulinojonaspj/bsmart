@@ -3,10 +3,10 @@ import { LoginServiceService } from '../login/login-service.service';
 import { HighchartsChartModule } from 'highcharts-angular';
 import * as Highcharts from 'highcharts';
 import HighchartsMore from 'highcharts/highcharts-more';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Objetivo } from '../objetivos/objetivo';
 import { BaseService } from '../../base.service';
-import { Consumo, Interruptor } from './resumo.service';
+import { Consumo, Interruptor, InterruptorPost, ResumoService } from './resumo.service';
 import { replaceDecimalSeparator } from '../../pipe';
 import { CommonModule } from '@angular/common';
 import { IUtilizador } from '../contratos/IUtilizador';
@@ -14,14 +14,14 @@ import { IUtilizador } from '../contratos/IUtilizador';
 @Component({
   selector: 'app-resumo',
   standalone: true,
-  imports: [HighchartsChartModule, HighchartsChartModule, FormsModule,  replaceDecimalSeparator, CommonModule,ReactiveFormsModule],
+  imports: [HighchartsChartModule, HighchartsChartModule, FormsModule, replaceDecimalSeparator, CommonModule, ReactiveFormsModule],
   templateUrl: './resumo.component.html',
   styleUrl: './resumo.component.css'
 })
 export class ResumoComponent implements OnInit {
   barras: typeof Highcharts = Highcharts;
   form!: FormGroup;
-  registar=0;
+  registar = 0;
   ano = 2024;
   mes = this.obterMesAtual();
   // Obtém a data atual
@@ -54,6 +54,7 @@ export class ResumoComponent implements OnInit {
 
   precoFixoAgua = 0;
   precoFixoEnergia = 0;
+  iRemover = 0;
 
   chartOptions: Highcharts.Options = {};
 
@@ -68,11 +69,18 @@ export class ResumoComponent implements OnInit {
 
   authservice = inject(LoginServiceService);
   private serviceBase = inject(BaseService);
+  private resumoService = inject(ResumoService);
 
-  constructor() {
+  constructor(private formBuilder: FormBuilder) {
 
   }
   ngOnInit(): void {
+
+    this.form = this.formBuilder.group({
+      id: [0, Validators.required],
+      localizacao: ["", Validators.required]
+
+    });
     HighchartsMore(Highcharts);
 
     setInterval(() => {
@@ -82,11 +90,33 @@ export class ResumoComponent implements OnInit {
 
   }
 
+  find(id: number) {
+    this.resumoService.find(id).subscribe(res => {
+      this.form.setValue({
+        id: res.id,
+        localizacao: res.localizacao
+      });
+      console.log(res);
+    });
+  }
+  guardar() {
+    const values: InterruptorPost = <InterruptorPost>this.form.value;
+    this.resumoService.guardar(values).subscribe(res => {
+      console.log(res);
+    });
+  }
+  remover(id: number) {
+    this.resumoService.remover(id).subscribe(res => {
+
+    });
+  }
+
+
   ligar(id: number, valor: number) {
     this.serviceBase.resumoService.ligar(id, valor).subscribe(res => {
-        this.serviceBase.resumoService.getInterruptor().subscribe(res => {
-          this.interruptor = res;
-        });
+      this.serviceBase.resumoService.getInterruptor().subscribe(res => {
+        this.interruptor = res;
+      });
     });
 
   }

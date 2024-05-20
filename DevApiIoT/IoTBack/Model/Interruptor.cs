@@ -7,24 +7,32 @@ namespace IOTBack.Model
     public class Interruptor
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public required int Id { get; set; }
 
-        public string localizacao { get; set; }
-        public string tipo { get; set; }
-        public int ligado_manual { get; set; }
-        public int ligado_apoximidade { get; set; }
-        public int ligado_presenca { get; set; }
-        public int ligado_temperatura_maior { get; set; }
-        public int ligado_temperatura_menor { get; set; }
-        public int ligado_temperatura_igual { get; set; }
-        public int ligado_humidade_maior { get; set; }
-        public int ligado_humidade_menor { get; set; }
-        public int ligado_humidade_igual { get; set; }
-        public int ligado { get; set; }
+        public required string localizacao { get; set; }
+        public required string tipo { get; set; }
+        public int? ligado_manual { get; set; }
+        public int? ligado_apoximidade { get; set; }
+        public int? ligado_presenca { get; set; }
+        public int? ligado_temperatura_maior { get; set; }
+        public int? ligado_temperatura_menor { get; set; }
+        public int? ligado_temperatura_igual { get; set; }
+        public int? ligado_humidade_maior { get; set; }
+        public int? ligado_humidade_menor { get; set; }
+        public int? ligado_humidade_igual { get; set; }
+        public int? ligado { get; set; }
         public DateTime created_at { get; set; } = DateTime.Now;
 
-        public Interruptor(string localizacao, string tipo, int ligado_manual, int ligado_apoximidade, int ligado_presenca, int ligado_temperatura_maior, int ligado_temperatura_menor, int ligado_temperatura_igual, int ligado_humidade_maior, int ligado_humidade_menor, int ligado_humidade_igual, int ligado, DateTime created_at)
+        public Interruptor() { }
+
+        public Interruptor(int id,string localizacao, string tipo)
+        {
+            Id = id;
+            this.localizacao = localizacao;
+            this.tipo = tipo;
+        }
+
+            public Interruptor(string localizacao, string tipo, int ligado_manual, int ligado_apoximidade, int ligado_presenca, int ligado_temperatura_maior, int ligado_temperatura_menor, int ligado_temperatura_igual, int ligado_humidade_maior, int ligado_humidade_menor, int ligado_humidade_igual, int ligado, DateTime created_at)
         {
             
             this.localizacao = localizacao ?? throw new ArgumentNullException(nameof(localizacao));
@@ -41,5 +49,19 @@ namespace IOTBack.Model
             this.ligado = ligado;
             this.created_at = created_at;
         }
+
+       
+    }
+
+
+    public class FInterruptor
+    {
+        [Required]
+        public required int Id { get; set; }
+
+        [Required]
+        public required string Localizacao { get; set; }
+ 
+
     }
 }

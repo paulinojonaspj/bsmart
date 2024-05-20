@@ -16,6 +16,7 @@ namespace IOTBack.Infraestrutura
         public DbSet<Objetivo> Objetivo { get; set; }
 
         public DbSet<Interruptor> Interruptor { get; set; }
+        public DbSet<Notificacao> Notificacao { get; set; }
 
 
 

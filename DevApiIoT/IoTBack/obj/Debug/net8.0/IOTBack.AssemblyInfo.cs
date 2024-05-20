@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IOTBack")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22a9aeabc8ad480f578ec1a810c224ecced2e479")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+13d80e43a9c0e33fbcfb52ffab10a49067b6a7b4")]
 [assembly: System.Reflection.AssemblyProductAttribute("IOTBack")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IOTBack")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
