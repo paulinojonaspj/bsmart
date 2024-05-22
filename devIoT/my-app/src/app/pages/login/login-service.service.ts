@@ -52,6 +52,7 @@ export class LoginServiceService {
   }
 
   isAuthenticated(): rAuth | boolean {
+
     const token = localStorage.getItem('token');
     if (!!token) {
       var res = <rAuth>JSON.parse(token);

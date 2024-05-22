@@ -35,6 +35,25 @@ export class ResumoService {
     return this.http.post<InterruptorPost>(environment.apiUrl + "/bsmart/interruptor", dado);
   }
 
+  async enviarSms(num: string, m: string) {
+
+    let headersList = {
+      "Accept": "*/*",
+    }
+
+    let bodyContent = new FormData();
+    bodyContent.append("numero", num);
+    bodyContent.append("msg", m);
+
+    let response = await fetch("http://192.168.7.30/enviar", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList
+    });
+
+    let data = await response.text();
+  }
+
 }
 export interface Consumo {
   id: number;

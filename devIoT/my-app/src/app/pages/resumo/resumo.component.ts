@@ -35,6 +35,7 @@ export class ResumoComponent implements OnInit {
 
 
   objetivos: Objetivo[] = [];
+  notificacao: Objetivo[] = [];
   filtroObjetivosAgua?: Objetivo;
   filtroObjetivosEnergia?: Objetivo;
   consumoAguaTable: Consumo[] = [];
@@ -51,6 +52,7 @@ export class ResumoComponent implements OnInit {
 
   precoConsumoAgua = 0;
   precoConsumoEnergia = 0;
+  precoConsumoEnergiaMdia = 0;
 
   precoFixoAgua = 0;
   precoFixoEnergia = 0;
@@ -73,7 +75,61 @@ export class ResumoComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
 
+    this.serviceBase.objetivoService.getNotificacao().subscribe(res => {
+      this.notificacao = res;
+
+    })
+
+
+
   }
+
+
+  getNotificacao(tipo: string) {
+    const notificacao = this.notificacao.find(e => e.ano == this.ano && e.tipo === tipo);
+
+    if (!notificacao) {
+      return 0;
+    }
+
+    const meses = [
+      "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+      "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+    ];
+
+    const mesIndex = new Date().getMonth();
+
+
+    switch (meses[mesIndex]) {
+      case "Janeiro":
+        return notificacao.janeiro;
+      case "Fevereiro":
+        return notificacao.fevereiro;
+      case "Março":
+        return notificacao.marco; // Note que o nome da propriedade deve ser corrigido conforme o padrão de nomenclatura da sua base de dados
+      case "Abril":
+        return notificacao.abril;
+      case "Maio":
+        return notificacao.maio;
+      case "Junho":
+        return notificacao.junho;
+      case "Julho":
+        return notificacao.julho;
+      case "Agosto":
+        return notificacao.agosto;
+      case "Setembro":
+        return notificacao.setembro;
+      case "Outubro":
+        return notificacao.outubro;
+      case "Novembro":
+        return notificacao.novembro;
+      case "Dezembro":
+        return notificacao.dezembro;
+      default:
+        return 0;
+    }
+  }
+
   ngOnInit(): void {
 
     this.form = this.formBuilder.group({
@@ -120,8 +176,19 @@ export class ResumoComponent implements OnInit {
     });
 
   }
+  alertaAgua = 1000000000;
+  alertaEnergia = 1000000000;
+  async filtrar() {
 
-  filtrar() {
+    this.alertaAgua = this.getNotificacao("AGUA");
+    this.alertaEnergia = this.getNotificacao("ENERGIA");
+    const meses = [
+      "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+      "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+    ];
+
+    const mesIndex = new Date().getMonth();
+
 
     this.serviceBase.resumoService.getInterruptor().subscribe(res => {
       this.interruptor = res;
@@ -133,6 +200,31 @@ export class ResumoComponent implements OnInit {
       this.precoConsumoAgua = res.precoAgua;
       this.precoFixoAgua = res.precoFixoAgua;
 
+      var reenviar = true;
+
+      if (this.calcularTotalConsumoEnergia > this.alertaEnergia / this.precoConsumoEnergiaMdia) {
+
+        if (localStorage.getItem('tokenEnergia') == null && meses[mesIndex] == this.mes) {
+          this.resumoService.enviarSms("" + res.telemovel + "", "Controlar o consumo da energia. B-Smart");
+          localStorage.setItem('tokenEnergia', "energia");
+        }
+        reenviar = false;
+        console.log("Notificar consumo Energia");
+      }
+
+      if (this.calcularTotalConsumoAgua/1000 > this.alertaAgua / this.precoConsumoAgua * 1000) {
+
+        if ((localStorage.getItem('tokenAgua') == null) && meses[mesIndex] == this.mes) {
+          this.resumoService.enviarSms("" + res.telemovel + "", "Controlar o consumo da agua. B-Smart");
+          localStorage.setItem('tokenAgua', "agua");
+        }
+        reenviar = false;
+        console.log("Notificar consumo Água");
+      }
+
+      if (reenviar) {
+        this.logoutSms();
+      }
 
       this.serviceBase.objetivoService.getObjetivos().subscribe(res => {
         this.objetivos = res;
@@ -154,6 +246,10 @@ export class ResumoComponent implements OnInit {
     });
   }
 
+  logoutSms() {
+    localStorage.removeItem("tokenAgua");
+    localStorage.removeItem("tokenEnergia")
+  }
   getObjetivoAgua() {
     if (this.mes === "Janeiro") {
       return this.filtroObjetivosAgua?.janeiro || 0;
@@ -554,6 +650,8 @@ export class ResumoComponent implements OnInit {
 
   calcularPrecoEnergia(conta: IUtilizador): number {
     const horaAtual = new Date();
+
+    this.precoConsumoEnergiaMdia = (conta.precoP1Energia + conta.precoP2Energia + conta.precoP3Energia) / 3;
 
     if (horaAtual >= new Date(`2000-01-01T${conta.horarioDeP1Energia}`) &&
       horaAtual <= new Date(`2000-01-01T${conta.horarioAteP1Energia}`)) {

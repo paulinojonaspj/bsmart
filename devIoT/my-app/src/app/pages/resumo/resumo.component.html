@@ -73,7 +73,7 @@
         <button class="btn btn-outline-success" (click)="ligar(inter.id,0)">
           <p>{{ inter.id }}-{{ inter.localizacao }}</p>
           <img style="width: 80%; cursor: pointer;" src="/assets/iLigado.png">
-        </button>d
+        </button>
 
         }@else{
         <button class="btn btn-outline-success" (click)="ligar(inter.id,1)">
@@ -172,7 +172,8 @@
               <td>Atual: {{ (consumo.quantidade/1000).toFixed(2).toLocaleString() }} L<br>Média: {{
                 ((consumo.quantidade/1000)/diaAtual).toFixed(2).toLocaleString() }} L</td>
 
-              <td>Atual : {{ ((consumo.quantidade/1000/1000)* precoConsumoAgua).toFixed(2).toLocaleString() }} &euro;<br>
+              <td>Atual : {{ ((consumo.quantidade/1000/1000)* precoConsumoAgua).toFixed(2).toLocaleString() }}
+                &euro;<br>
                 Previsto: {{ (((((consumo.quantidade/1000/1000)*
                 precoConsumoAgua)/diaAtual)*diasMes)).toFixed(2).toLocaleString() }}
                 &euro;</td>
@@ -192,9 +193,18 @@
               </td>
             </tr>
             <tr style="font-weight: bold;">
-              <td colspan="2">OBJETIVO</td>
+              <td></td>
+              @if( (calcularTotalConsumoAgua/1000)> (alertaAgua/precoConsumoAgua*1000)){
+              <td style="background-color: yellow;">Notificação: {{ (alertaAgua/precoConsumoAgua*1000).toFixed(2) }}
+                L (<a href="#" (click)="logoutSms()">Notificar</a>)</td>
+              }@else{
+              <td>Notificação: {{ (alertaAgua/precoConsumoAgua*1000).toFixed(2) }} L</td>
+              }
 
-              <td>{{ objetivoAgua.toFixed(2).toLocaleString() }} &euro;</td>
+
+
+              <td>Objetivo: {{ objetivoAgua.toFixed(2) }} &euro;</td>
+
             </tr>
           </tbody>
         </table>
@@ -220,9 +230,9 @@
             @for(consumo of consumoEnergiaTable;track consumo){
             <tr>
               <td>{{ consumo.localizacao }}</td>
-              <td>Atual: {{ (consumo.quantidade/3600).toFixed(2).toLocaleString() }} kWh<br>Média: {{
-                ((consumo.quantidade/3600)/
-                diaAtual).toFixed(2).toLocaleString() }} kWh</td>
+              <td>Atual: {{ ((consumo.quantidade/3600)*1000).toFixed(2).toLocaleString() }} Wh<br>Média: {{
+                (((consumo.quantidade/3600)/
+                diaAtual)*1000).toFixed(2).toLocaleString() }} Wh</td>
               <td>Atual: {{(consumo.quantidade/3600* precoConsumoEnergia).toFixed(2).toLocaleString() }} &euro;<br>
                 Previsto: {{ (((consumo.quantidade/3600*
                 precoConsumoEnergia)/diaAtual)*diasMes).toFixed(2).toLocaleString() }}
@@ -233,8 +243,8 @@
 
             <tr style="font-weight: bold;">
               <td>TOTAL</td>
-              <td>Atual: {{ calcularTotalConsumoEnergia.toFixed(2).toLocaleString() }} kWh<br>
-                Média: {{ (calcularTotalConsumoEnergia/ diaAtual) .toFixed(2).toLocaleString() }} kWh
+              <td>Atual: {{ (calcularTotalConsumoEnergia*1000).toFixed(2).toLocaleString() }} Wh<br>
+                Média: {{ ((calcularTotalConsumoEnergia*1000)/ diaAtual) .toFixed(2).toLocaleString() }} Wh
               </td>
               <td>Atual: {{ ((calcularTotalConsumoEnergia* precoConsumoEnergia) +
                 precoFixoEnergia).toFixed(2).toLocaleString() }}
@@ -244,9 +254,16 @@
               </td>
             </tr>
             <tr style="font-weight: bold;">
-              <td colspan="2">OBJETIVO</td>
+              <td></td>
+              @if( (calcularTotalConsumoEnergia*1000)>(alertaEnergia/precoConsumoEnergiaMdia*1000)){
+              <td>Notificação: {{ (alertaEnergia/precoConsumoEnergiaMdia*1000).toFixed(2) }} Wh (<a href="#" (click)="logoutSms()">Notificar</a>)</td>
+              }@else{
+              <td>Notificação: {{ (alertaEnergia/precoConsumoEnergiaMdia*1000).toFixed(2) }} Wh</td>
+              }
 
-              <td>{{ objetivoEnergia.toFixed(2).toLocaleString() }} &euro;</td>
+              <td>Objetivo: {{ objetivoEnergia.toFixed(2).toLocaleString() }} &euro;</td>
+
+
             </tr>
           </tbody>
         </table>
