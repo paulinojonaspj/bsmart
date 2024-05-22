@@ -10,9 +10,9 @@ void setup() {
 }
 
 void loop() {
-  sendSMS("+351938137218", "Mensagem de teste");
+  sendSMS("+351934968956", "Mensagem de teste");
 
-  delay(5000); // Aguarda 5 segundos antes de enviar o próximo SMS
+  delay(15000); // Aguarda 5 segundos antes de enviar o próximo SMS
 }
 
 void sendSMS(String phoneNumber, String message) {
