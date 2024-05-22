@@ -1,8 +1,6 @@
 const prod = false;
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:5048/api/v1',
-  //apiUrl: 'https://10.42.0.1:8080/api/v1',
-  //apiUrl: 'http://192.168.189.93:8080/api/v1',
-  //apiUrl: prod ? 'http://192.168.7.10:8080/api/v1' : 'https://localhost:7174/api/v1',
+ apiUrl: 'http://localhost:5048/api/v1',
+ // apiUrl: 'http://51.254.37.49:9080/api/v1'
 };
